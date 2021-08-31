@@ -7,7 +7,7 @@ neovim plugin for cp
 - Problem parser (Competitive Companion)
 - Multiple problem
 - Extensive multitest
-- Hotkey submit
+- Submit directly to cf (cf-tools)
 - Stresstest
 - Terminal intergration
 - GDB support
