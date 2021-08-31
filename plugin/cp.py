@@ -96,7 +96,7 @@ class Problem:
       os.system(f"echo [Complication has finished in {round(time.time() - startTime, 2)}s] >> .info")
     else:
       os.system(f"echo [Compile error] >> .info")
-    vim.put("let i = winnr() | 2wincmd w | e | execute i . 'wincmd w'")
+    vim.put("let i = winnr() | 2wincmd w | e .info | execute i . 'wincmd w'")
 
   def run(self, t):
     self.result[t] = "PD"
@@ -202,7 +202,7 @@ class Handler(BaseHTTPRequestHandler):
     content_len = int(self.headers['Content-Length'])
     post_body = self.rfile.read(content_len)
     build(json.loads(post_body))
-    vim.put("set showtabline=2 | set hidden | set autoread")
+    vim.put("set showtabline=2 | set hidden")
 
   def log_message(self, format, *args):
     return
