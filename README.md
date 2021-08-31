@@ -4,10 +4,10 @@ neovim plugin for cp
 
 # Features
 
-- Problem parser (Competitive Companion)
+- Problem parser
 - Multiple problem
 - Extensive multitest
-- Submit directly to cf (cf-tools)
+- Hotkey submit
 - Stresstest
 - Terminal intergration
 - GDB support
