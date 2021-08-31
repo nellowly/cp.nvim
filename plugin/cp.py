@@ -1,15 +1,8 @@
-import time, queue, neovim, json, os, re, subprocess, pickle, threading, socket, signal
+import sys, time, queue, neovim, json, os, re, subprocess, pickle, threading, socket, signal
 from os.path import expanduser
-
-cur = ""
-compileCmd = "g++"
-codePath = expanduser("~") + f"/code"
-templatePath = f"~/code/templates/multi.cpp"
-regrexLink = [
-  r".*://codeforces.com/(?:gym|contest)/([1-9][0-9]*)/problem/(0|[A-Z][1-9]?)",
-  r".*://codeforces.com/problemset/problem/([1-9][0-9]*)/([A-Z][1-9]?)",
-  r".*://atcoder.jp/contests/([a-z]*[0-9]*)/tasks/([a-z]*[0-9]*_[a-z][1-9]?)"
-]
+# sys.path.append('.cache')
+# from config import cur, compileCmd, codePath, templatePath, regrexLink
+exec(open("/tmp/cp.conf").read())
 problemList = []
 problemStatus = {}
 problem = {}
