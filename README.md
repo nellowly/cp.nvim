@@ -66,6 +66,7 @@ hi fAC ctermfg=Black ctermbg=DarkGreen guifg=#000000 guibg=#98C379
 hi fWA ctermfg=Black ctermbg=Red guifg=#000000 guibg=#E06C75
 hi fRE ctermfg=Black ctermbg=Blue guifg=#000000 guibg=#61AFEF
 hi fTL ctermfg=Black ctermbg=Yellow guifg=#000000 guibg=#E5C07B
+hi TabLineFill guibg=none
 endif
 "\
 ```
