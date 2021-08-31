@@ -50,6 +50,22 @@ function CpAdd(...)
   call CpCmd('problem[cur].add(' . v:count .')')
 endfunction
 noremap A :<C-u>call CpAdd()<CR>
+" Define colors
+hi HD ctermfg=White ctermbg=none guifg=#ffffff guibg=none
+hi NA ctermfg=White ctermbg=DarkGray guifg=#ffffff guibg=#ABB2BF
+hi PD ctermfg=White ctermbg=Gray guifg=#C678DD guibg=#ffffff
+hi AC ctermfg=White ctermbg=Green guifg=#ffffff guibg=#98C379
+hi WA ctermfg=White ctermbg=Red guifg=#ffffff guibg=#E06C75
+hi RE ctermfg=White ctermbg=Blue guifg=#ffffff guibg=#61AFEF
+hi TL ctermfg=White ctermbg=Yellow guifg=#ffffff guibg=#E5C07B
+" Black fg for Sel
+hi fHD ctermfg=Black ctermbg=none guifg=#000000 guibg=none
+hi fPD ctermfg=Black ctermbg=Gray guifg=#000000 guibg=#ABB2BF
+hi fNA ctermfg=Black ctermbg=DarkGray guifg=#000000 guibg=#ABB2BF
+hi fAC ctermfg=Black ctermbg=DarkGreen guifg=#000000 guibg=#98C379
+hi fWA ctermfg=Black ctermbg=Red guifg=#000000 guibg=#E06C75
+hi fRE ctermfg=Black ctermbg=Blue guifg=#000000 guibg=#61AFEF
+hi fTL ctermfg=Black ctermbg=Yellow guifg=#000000 guibg=#E5C07B
 endif
 "\
 ```

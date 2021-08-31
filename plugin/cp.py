@@ -126,7 +126,7 @@ class Problem:
       process.append(p)
     for p in process:
       p.join()
-    vim.put(f"let i = winnr() | 2 wincmd w | e! | 4wincmd w | e! | execute i . 'wincmd w'")
+    vim.put(f"let i = winnr() | 2 wincmd w | e! test/{self.curTest}/.stderr | 4wincmd w | e! | execute i . 'wincmd w'")
 
   def compile_run(self):
     self.compile()
