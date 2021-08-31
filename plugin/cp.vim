@@ -8,7 +8,7 @@ if argv(0) != 'cp'
   finish
 endif
 call serverstart('/tmp/cp')
-" silent !bash -c 'python <sfile>:p:h/cp.py &'
+silent !bash -c 'python <sfile>:p:h/cp.py &'
 
 function CpCmd(s, ...)
 py3 << EOF
