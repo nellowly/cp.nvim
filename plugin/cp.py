@@ -1,7 +1,5 @@
 import sys, time, queue, neovim, json, os, re, subprocess, pickle, threading, socket, signal
 from os.path import expanduser
-# sys.path.append('.cache')
-# from config import cur, compileCmd, codePath, templatePath, regrexLink
 exec(open("/tmp/cp.conf").read())
 problemList = []
 problemStatus = {}
