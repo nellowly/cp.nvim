@@ -41,6 +41,12 @@ class Problem:
       s += f"\ {i}\ "
     vim.put(f"set tabline={s}")
 
+  def submit(self):
+    os.system("echo [Submitting...] > .info")
+    vim.put("let i = winnr() | 2wincmd w | e .info | execute i . 'wincmd w'")
+    os.system(f"cf submit -f sol.cpp {cur} > .info")
+    vim.put("let i = winnr() | 2wincmd w | e | execute i . 'wincmd w'")
+
   def test(self, t):
     if not t in self.result: return
     vim.put(f"let i = winnr() | 2wincmd w | e tests/{t}/.stderr | 3wincmd w | e tests/{t}/{t}.in | 4wincmd w | e tests/{t}/{t}.out | 5wincmd w | e tests/{t}/{t}.ans | execute i . 'wincmd w'")
@@ -87,18 +93,18 @@ class Problem:
     self.tabline()
 
   def compile(self):
-    os.system("rm -rf sol; echo [Complication has started] > .compile")
+    os.system("rm -rf sol; echo [Complication has started] > .info")
     startTime = time.time()
-    vim.put("let i = winnr() | 2wincmd w | edit .compile | execute i . 'wincmd w'")
+    vim.put("let i = winnr() | 2wincmd w | edit .info | execute i . 'wincmd w'")
     for t, v in self.result.items():
       if self.result[t] != 'HD':
         self.result[t] = "NA"
     self.tabline()
-    os.system(f"{compileCmd} sol.cpp -o {self.problemPath}/sol 2>> .compile")
+    os.system(f"{compileCmd} sol.cpp -o {self.problemPath}/sol 2>> .info")
     if os.path.isfile("sol"):
-      os.system(f"echo [Complication has finished in {round(time.time() - startTime, 2)}s] >> .compile")
+      os.system(f"echo [Complication has finished in {round(time.time() - startTime, 2)}s] >> .info")
     else:
-      os.system(f"echo [Compile error] >> .compile")
+      os.system(f"echo [Compile error] >> .info")
     vim.put("let i = winnr() | 2wincmd w | e | execute i . 'wincmd w'")
 
   def run(self, t):
@@ -205,7 +211,7 @@ class Handler(BaseHTTPRequestHandler):
     content_len = int(self.headers['Content-Length'])
     post_body = self.rfile.read(content_len)
     build(json.loads(post_body))
-    vim.put("set showtabline=2 | set hidden")
+    vim.put("set showtabline=2 | set hidden | set autoread")
 
   def log_message(self, format, *args):
     return
