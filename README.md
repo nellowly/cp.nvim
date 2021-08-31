@@ -1,3 +1,17 @@
+# cp.nvim
+
+neovim plugin for cp
+
+# Features
+
+- Problem parser (Competitive Companion)
+- Multiple problem
+- Extensive multitest
+- Hotkey submit
+- Stresstest
+- Terminal intergration
+- GDB support
+
 # Config
 
 .vimrc example
