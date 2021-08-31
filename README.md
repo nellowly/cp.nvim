@@ -1,4 +1,3 @@
-
 # cp.nvim
 
 neovim plugin for cp
@@ -41,4 +40,3 @@ if argv(0) == 'cp'
 endif
 "\
 ```
-
