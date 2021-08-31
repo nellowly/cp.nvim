@@ -47,7 +47,9 @@ class Problem:
   def add(self, t):
     self.result[t] = "NA"
     os.system(f"mkdir tests/{t}")
+    os.system(f"touch tests/{t}/.stderr")
     os.system(f"touch tests/{t}/{t}.in")
+    os.system(f"touch tests/{t}/{t}.out")
     os.system(f"touch tests/{t}/{t}.ans")
     self.test(t)
 
@@ -186,6 +188,24 @@ def build(problemInfo):
     problem[cur].build(problemInfo['tests'])
   problem[cur].display()
 
+def local(s):
+  global cur
+  cur = s
+  if cur in problemStatus:
+    return
+  if problemList:
+    vim.put("tabnew")
+  problemStatus[cur] = "NA"
+  problemList.append(cur)
+  problemPath = f"{codePath}/local/{s}"
+  if os.path.isfile(f"{problemPath}/.{cur}"):
+    with open(f"{problemPath}/.{cur}", "rb") as f:
+      problem[cur] = pickle.load(f)
+  else:
+    problem[cur] = Problem(problemPath, 0, 1)
+    problem[cur].build([])
+  problem[cur].display()
+
 def save_quit():
   for n, p in problem.items():
     with open(f"{p.problemPath}/.{n}", "wb") as f:
@@ -202,7 +222,6 @@ class Handler(BaseHTTPRequestHandler):
     content_len = int(self.headers['Content-Length'])
     post_body = self.rfile.read(content_len)
     build(json.loads(post_body))
-    vim.put("set showtabline=2 | set hidden")
 
   def log_message(self, format, *args):
     return
@@ -226,6 +245,7 @@ def vim_listen(s = socket.socket()):
       vim.put("echo \"Invalid function\"")
 
 if __name__ == '__main__':
+  vim.put("set showtabline=2 | set hidden | set autoread")
   threading.Thread(target = vim_send).start()
   threading.Thread(target = http_listen).start()
   threading.Thread(target = vim_listen).start()
