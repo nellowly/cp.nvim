@@ -205,6 +205,7 @@ def local(s):
     problem[cur] = Problem(problemPath, 0, 1)
     problem[cur].build([])
   problem[cur].display()
+  problem[cur].add(0)
 
 def save_quit():
   for n, p in problem.items():
