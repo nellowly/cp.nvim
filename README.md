@@ -37,7 +37,7 @@ for i in range(0, 9)
 endfor
 noremap <A-t> :2wincmd w \| term<CR>i
 noremap <A-S> :wa \| call CpCmd('threading.Thread(target = problem[cur].submit).start()')<CR>
-noremap <A-c> :wa \| call CpCmd('problem[cur].compile()')<CR>
+noremap <A-c> :wa \| call CpCmd('threading.Thread(target = problem[cur].compile).start()')<CR>
 noremap <A-r> :wa \| call CpCmd('threading.Thread(target = problem[cur].run(problem[cur].curTest).start())')<CR><CR>
 noremap <A-a> :wa \| call CpCmd('threading.Thread(target = problem[cur].compile_run).start()')<CR><CR>
 noremap <A-d> :call CpCmd('problem[cur].remove(problem[cur].curTest)')<CR>
