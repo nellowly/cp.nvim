@@ -1,10 +1,11 @@
+
 # cp.nvim
 
 neovim plugin for cp
 
 # Features
 
-- Problem parser (Competitive Companion)
+- Problem parser
 - Multiple problem
 - Extensive multitest
 - Hotkey submit
@@ -40,3 +41,4 @@ if argv(0) == 'cp'
 endif
 "\
 ```
+
